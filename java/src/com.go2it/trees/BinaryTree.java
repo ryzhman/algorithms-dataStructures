@@ -1,4 +1,4 @@
-package com.go2it.trees;
+package main.com.go2it.trees;
 
 public class BinaryTree {
     private Node root;

@@ -1,6 +1,5 @@
-package com.go2it.biggestNumbers;
+package main.com.go2it.biggestNumbers;
 
-import javax.print.DocFlavor;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

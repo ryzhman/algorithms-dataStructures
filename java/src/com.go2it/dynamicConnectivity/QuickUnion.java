@@ -1,17 +1,17 @@
-package com.go2it.dynamicConnectivity;
+package dynamicConnectivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Implementation of *quick find* data structure
+ * Implementation of *quick union* data structure
  *
  */
-public class UnionQuickFind implements DataStructure {
+public class QuickUnion implements DataStructure {
     private int[] elements;
 
-    public UnionQuickFind(int size) {
+    public QuickUnion(int size) {
         elements = new int[size];
         for (int i = 0; i < size; i++) {
             elements[i] = i;
@@ -21,25 +21,32 @@ public class UnionQuickFind implements DataStructure {
     /**
      * Eager union representation
      * 0 1 2 3 4 5
-     * 1 1 3 1 3 5
-     * second array represents the common root element
+     * 1 1 3 0 2 5
+     * second array shows the chain of unions
      *
      * @param i1
      * @param i2
      */
-    public void eagerUnion(int i1, int i2) {
-        final int oldValue = elements[i1];
-        final int newValue = elements[i2];
-        for (int i = 0; i < elements.length; i++) {
-            if (elements[i] == oldValue) {
-                elements[i] = newValue;
-            }
+    public void union(int i1, int i2) {
+        //combine branches by their roots
+        int i1Root = root(i1);
+        int i2Root = root(i2);
+        elements[i1Root] = i2Root;
+    }
+
+    @Override
+    public int root(int i) {
+        while (elements[i] != i) {
+            i = elements[i];
         }
+        return i;
     }
 
     @Override
     public boolean areConnected(int i1, int i2) {
-        return elements[i1] == elements[i2];
+        int rootForI1 = root(i1);
+        int rootForI2 = root(i2);
+        return rootForI1 == rootForI2;
     }
 
     /**
