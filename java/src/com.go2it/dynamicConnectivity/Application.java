@@ -1,8 +1,4 @@
-package main.com.go2it.dynamicConnectivity;
-
-import dynamicConnectivity.DataStructure;
-import dynamicConnectivity.QuickFind;
-import dynamicConnectivity.QuickUnion;
+package dynamicConnectivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,9 +9,9 @@ public class Application {
     public static void main(String[] args) throws IOException {
         final DataStructure dataStructure;
         try(BufferedReader bufferedReader = Files.newBufferedReader(Paths.get("C:\\Users\\oryzhkov\\Documents\\git\\algorithms\\java\\src\\resources\\tinyUF.txt"))) {
-            //quickFind data structure
-            dataStructure = initQuickFindTree(bufferedReader);
+//            dataStructure = initQuickFindTree(bufferedReader);
 //            dataStructure = initQuickUnionTree(bufferedReader);
+            dataStructure = initWeightenedQuickUnionTree(bufferedReader);
         }
 
         System.out.format("Shared component for %d and %d: ", 1, 5);
@@ -59,5 +55,21 @@ public class Application {
             }
         }
         return unionFind;
+    }
+
+    private static DataStructure initWeightenedQuickUnionTree(BufferedReader bufferedReader) throws IOException {
+        int numberOfElems = Integer.parseInt(bufferedReader.readLine());
+        WeightenedQuickUnion weightenedQuickUnion = new WeightenedQuickUnion(numberOfElems);
+        String line = null;
+        while ((line = bufferedReader.readLine()) != null) {
+            final String[] nodes = line.split(" ");
+            final Integer i1 = Integer.valueOf(nodes[0]);
+            final Integer i2 = Integer.valueOf(nodes[1]);
+            if (!weightenedQuickUnion.areConnected(i1, i2)) {
+                weightenedQuickUnion.union(i1, i2);
+//                    System.out.println(i1 + " - " + i2);
+            }
+        }
+        return weightenedQuickUnion;
     }
 }
