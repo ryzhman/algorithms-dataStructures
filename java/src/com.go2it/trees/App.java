@@ -1,4 +1,4 @@
-package main.com.go2it.trees;
+package trees;
 
 public class App {
     public static void main(String[] args) {

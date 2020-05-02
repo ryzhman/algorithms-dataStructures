@@ -39,4 +39,16 @@ public class Stack {
         System.out.println(stack.pop());
         System.out.println(stack.pop());
     }
+
+    public int[] getElems() {
+        return elems;
+    }
+
+    public int getCurrentSize() {
+        return currentSize;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
 }
