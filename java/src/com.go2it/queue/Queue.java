@@ -2,7 +2,7 @@ package queue;
 
 import stack.HomeMadeLinkedListBasedStack;
 
-public class Queue {
+public class Queue implements iQueue {
     private HomeMadeLinkedListBasedStack<Integer> queue;
 
     public Queue(HomeMadeLinkedListBasedStack<Integer> queue) {

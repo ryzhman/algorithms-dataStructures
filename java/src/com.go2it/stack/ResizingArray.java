@@ -3,6 +3,7 @@ package stack;
 public class ResizingArray {
     private int[] array;
     private int currentSize;
+    private int firstElemIndex = 0;
 
     public ResizingArray(int size) {
         this.array = new int[size];
@@ -22,11 +23,7 @@ public class ResizingArray {
     public void addItem(int i) {
         final int maxSize = array.length;
         if (currentSize == maxSize) {
-            int[] newArr = new int[currentSize * 2];
-            for (int j = 0; j < array.length; j++) {
-                newArr[j] = array[j];
-            }
-            array = newArr;
+           resize();
         }
         array[currentSize++] = i;
     }
@@ -39,10 +36,31 @@ public class ResizingArray {
         int result = array[--currentSize];
         array[currentSize] = 0;
         if (currentSize == (array.length / 4)) {
-            int[] newArray = new int[currentSize];
-            for (int i = 0; i < currentSize; i++) {
-                newArray[i] = array[i];
-            }
+            resize();
+        }
+        return result;
+    }
+
+    private void resize() {
+        int[] newArray = new int[currentSize];
+        for (int i = 0; i < currentSize; i++) {
+            newArray[i] = array[i];
+        }
+        array = newArray;
+    }
+
+    private void resizeFromBeginning() {
+        int[] newArray = new int[currentSize];
+        for (int i = firstElemIndex; i < array.length; i++) {
+            newArray[i] = array[i];
+        }
+        array = newArray;
+    }
+
+    public int dequeue() {
+        int result = array[firstElemIndex++];
+        if (firstElemIndex == (array.length / 4)) {
+            resizeFromBeginning();
         }
         return result;
     }
