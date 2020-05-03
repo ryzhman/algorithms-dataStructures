@@ -2,6 +2,10 @@ package queue;
 
 import stack.ResizingArray;
 
+/**
+ * No way to make this as a Generic one
+ * Only casting from Object is feasible here
+ */
 public class ArrayBasedQueue implements iQueue {
     private ResizingArray queue;
 

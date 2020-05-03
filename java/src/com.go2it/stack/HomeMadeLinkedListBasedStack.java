@@ -1,12 +1,14 @@
 package stack;
 
+import java.util.Iterator;
+
 /**
  * Implementation of a double linked-list with previous and next elem in each node
  * <p>
  * Any operation - O(1)
  * Memory consumption - each field of the Node requires memory => 50 x N b  of elems
  */
-public class HomeMadeLinkedListBasedStack<T> {
+public class HomeMadeLinkedListBasedStack<T> implements Iterable<T>{
     private Node topNode;
     private Node startNode;
 
@@ -72,7 +74,26 @@ public class HomeMadeLinkedListBasedStack<T> {
         return topNode == null;
     }
 
-    private class Node<T> {
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Node currentNode = startNode;
+
+            @Override
+            public boolean hasNext() {
+                return startNode.getNext() == null;
+            }
+
+            @Override
+            public T next() {
+                Node nodeToShow =  currentNode;
+                currentNode = currentNode.getNext();
+                return (T) nodeToShow.getValue();
+            }
+        };
+    }
+
+    class Node<T> {
         private T value;
         private Node next;
         private Node previous;
@@ -103,4 +124,6 @@ public class HomeMadeLinkedListBasedStack<T> {
             this.next = next;
         }
     }
+
+
 }
