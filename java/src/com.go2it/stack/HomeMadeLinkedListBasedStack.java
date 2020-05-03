@@ -2,34 +2,54 @@ package stack;
 
 /**
  * Implementation of a double linked-list with previous and next elem in each node
- *
+ * <p>
  * Any operation - O(1)
  * Memory consumption - each field of the Node requires memory => 50 x N b  of elems
  */
-public class HomeMadeLinkedListBasedStackOfStrings {
+public class HomeMadeLinkedListBasedStack<T> {
     private Node topNode;
+    private Node startNode;
 
-    public HomeMadeLinkedListBasedStackOfStrings() {
+    public HomeMadeLinkedListBasedStack() {
     }
 
-    public void push(String elem) {
+    /**
+     * is used for both Queue and Stack
+     * @param elem
+     */
+    public void push(T elem) {
         if (topNode == null) {
             topNode = new Node(elem, null, null);
+            startNode = topNode;
         } else {
-            topNode = new Node(elem, topNode, null);
+            Node newTop = new Node(elem, null, topNode);
+            topNode.setNext(newTop);
+            topNode = newTop;
         }
     }
 
-    public String pop() {
+    public T pop() {
         if (topNode == null) {
             return null;
         }
-        final String value = topNode.getValue();
-        final Node next = topNode.getNext();
-        if (next != null) {
-            next.setPrevious(null);
-            topNode = next;
+        final T value = (T) topNode.getValue();
+        final Node previous = topNode.getPrevious();
+        if (previous != null) {
+            previous.setNext(null);
+            topNode = previous;
         } else {
+            topNode = null;
+        }
+        return value;
+    }
+
+    public T dequeue() {
+        if (startNode == null) {
+            return null;
+        }
+        T value = (T) startNode.getValue();
+        startNode = startNode.getNext();
+        if (this.isEmpty()) {
             topNode = null;
         }
         return value;
@@ -40,9 +60,9 @@ public class HomeMadeLinkedListBasedStackOfStrings {
         Node node = topNode;
         if (node != null) {
             size++;
-            while (node.getNext() != null) {
+            while (node.getPrevious() != null) {
                 size++;
-                node = node.getNext();
+                node = node.getPrevious();
             }
         }
         return size;
@@ -52,18 +72,18 @@ public class HomeMadeLinkedListBasedStackOfStrings {
         return topNode == null;
     }
 
-    private class Node {
-        private String value;
+    private class Node<T> {
+        private T value;
         private Node next;
         private Node previous;
 
-        public Node(String value, Node next, Node previous) {
+        public Node(T value, Node next, Node previous) {
             this.value = value;
             this.next = next;
             this.previous = previous;
         }
 
-        public String getValue() {
+        public T getValue() {
             return value;
         }
 
@@ -77,6 +97,10 @@ public class HomeMadeLinkedListBasedStackOfStrings {
 
         public void setPrevious(Node previous) {
             this.previous = previous;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
         }
     }
 }

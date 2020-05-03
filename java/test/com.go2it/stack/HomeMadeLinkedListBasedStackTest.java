@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HomeMadeLinkedListBasedStackOfStringsTest {
+public class HomeMadeLinkedListBasedStackTest {
     @Test
     public void testHappyPath() {
-        final HomeMadeLinkedListBasedStackOfStrings arrayBasedStackTest = new HomeMadeLinkedListBasedStackOfStrings();
+        final HomeMadeLinkedListBasedStack arrayBasedStackTest = new HomeMadeLinkedListBasedStack();
         arrayBasedStackTest.push("1");
         arrayBasedStackTest.push("2");
         arrayBasedStackTest.push("3");
