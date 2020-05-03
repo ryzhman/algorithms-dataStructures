@@ -93,7 +93,7 @@ public class HomeMadeLinkedListBasedStack<T> implements Iterable<T>{
         };
     }
 
-    class Node<T> {
+    public static class Node<T> {
         private T value;
         private Node next;
         private Node previous;
