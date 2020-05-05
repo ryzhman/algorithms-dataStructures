@@ -33,6 +33,9 @@ public class ResizingArray {
     }
 
     public int get() {
+        if (currentSize == 0) {
+            return -1;
+        }
         int result = array[--currentSize];
         array[currentSize] = 0;
         if (currentSize == (array.length / 4)) {
@@ -42,7 +45,7 @@ public class ResizingArray {
     }
 
     private void resize() {
-        int[] newArray = new int[currentSize];
+        int[] newArray = new int[currentSize * 2];
         for (int i = 0; i < currentSize; i++) {
             newArray[i] = array[i];
         }
@@ -63,5 +66,9 @@ public class ResizingArray {
             resizeFromBeginning();
         }
         return result;
+    }
+
+    public int size() {
+        return currentSize;
     }
 }

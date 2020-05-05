@@ -63,6 +63,9 @@ public class DejkstraExpressionStack {
         }
 
         public Object pop() {
+            if (currentNumberOfElems == 0) {
+                return Integer.MIN_VALUE;
+            }
             Object value = stack[--currentNumberOfElems];
             stack[currentNumberOfElems] = 0;
             if (currentNumberOfElems != 0 && (stack.length / 4) == currentNumberOfElems) {
@@ -86,6 +89,10 @@ public class DejkstraExpressionStack {
                 newStack[i] = stack[i];
             }
             stack = newStack;
+        }
+
+        public int size() {
+            return currentNumberOfElems;
         }
     }
 
