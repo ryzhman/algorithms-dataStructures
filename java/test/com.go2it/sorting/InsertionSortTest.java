@@ -19,7 +19,7 @@ public class InsertionSortTest {
         arr[7] = 0;
         arr[8] = -1;
         arr[9] = -11;
-        SelectionSort.sort(arr);
+        InsertionSort.sort(arr);
 
         assertTrue(SortingUtils.isSorted(arr));
     }
