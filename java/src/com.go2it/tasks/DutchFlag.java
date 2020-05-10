@@ -39,10 +39,9 @@ public class DutchFlag {
         while(lastIndexOfRed < lastIndexOfWhite) {
             String color = color(arr, lastIndexOfRed);
             if (color.equalsIgnoreCase("B")) {
-                swap(arr, lastIndexOfRed, lastIndexOfBlue++);
-                lastIndexOfRed++;
+                swap(arr, lastIndexOfRed++, lastIndexOfBlue++);
             } else if (color.equalsIgnoreCase("R")) {
-                swap(arr, lastIndexOfRed, lastIndexOfRed++);
+                lastIndexOfRed++;
             } else {
                 swap(arr, lastIndexOfRed, lastIndexOfWhite--);
             }
