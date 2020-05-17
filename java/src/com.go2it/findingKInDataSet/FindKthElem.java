@@ -1,4 +1,4 @@
-package tasks;
+package findingKInDataSet;
 
 import sorting.SortingUtils;
 

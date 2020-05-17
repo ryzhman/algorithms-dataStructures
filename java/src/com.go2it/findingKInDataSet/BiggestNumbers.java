@@ -1,4 +1,4 @@
-package main.com.go2it.biggestNumbers;
+package findingKInDataSet;
 
 import java.util.Arrays;
 import java.util.Collections;
