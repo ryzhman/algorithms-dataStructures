@@ -5,7 +5,7 @@ import trees.Node;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.Stack;
 
 /**
  * Given the root of the binary tree, find the third max in the tree.
@@ -16,15 +16,12 @@ public class SearchingKHighInTree {
     /**
      * Finding the max value in the tree
      * O(n) - traversing the tree and finding the biggest elem
+     * Recursion
      *
      * @param root
      * @return
      */
-    static int findMaxValue(Node root) {
-//        Deque<Integer> maxElems = new LinkedBlockingDeque<Integer>(3);
-//        maxElems.add(root.getValue());
-//        maxElems.add(root.getValue());
-//        maxElems.add(root.getValue());
+    static int findMaxValueRecursion(Node root) {
         return traverseRecursivelyOverTree(root, root.getValue());
     }
 
@@ -39,6 +36,37 @@ public class SearchingKHighInTree {
         }
         return max;
     }
+
+    /**
+     * Finding the max value in the tree
+     * O(n) - traversing the tree and finding the biggest elem
+     * Stack
+     *
+     * @param root
+     * @return
+     */
+    static int findMaxValueStack(Node root) {
+        return iterateOverTree(root);
+    }
+
+    private static int iterateOverTree(Node root) {
+        Stack<Node> stack = new Stack<>();
+        int max = root.getValue();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            if (current != null && current.getValue() > max) {
+                max = current.getValue();
+            }
+            if (current == null) {
+                continue;
+            }
+            stack.push(current.getRight());
+            stack.push(current.getLeft());
+        }
+        return max;
+    }
+
 
     private static Deque<Integer> traverseRecursivelyOverTree(Node node, Deque<Integer> maxElems) {
         int numberOfNodes = 0;
