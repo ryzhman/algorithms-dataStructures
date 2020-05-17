@@ -41,4 +41,11 @@ public class Node {
             setLeft(nextNode);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                '}';
+    }
 }
