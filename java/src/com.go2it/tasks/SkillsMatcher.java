@@ -38,10 +38,7 @@ package tasks;
 //    Use the same function as before, make sure that previous solutions still work.
 //    Hint: Use a second lambda function to return scores.
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiPredicate;
 
 public class SkillsMatcher {
@@ -51,6 +48,19 @@ public class SkillsMatcher {
         return findMatches(actual, desired, filter);
     }
 
+    /**
+     * O(n+m) solution
+     * Everything is stored in Set, each entry is split by regex to make sure the we don't have complex elements inside like
+     * "Ms Word 2013"
+     *
+     * @param desired
+     * @param actual
+     * @param filter
+     * @return
+     */
+    public static List<String> matchSkillsSet(String[] desired, String[] actual, BiPredicate<String, String> filter) {
+        return findMatchesSet(actual, desired, filter);
+    }
 
     public static List<String> findMatches(String[] actual, String[] desired, BiPredicate<String, String> test) {
         Map<String, String> map = new HashMap<>();
@@ -70,6 +80,58 @@ public class SkillsMatcher {
             }
         }
         return matchedSkills;
+    }
+
+    public static List<String> findMatchesSet(String[] actual, String[] desired, BiPredicate<String, String> test) {
+        HashSet<String> actualSet = new HashSet<>(actual.length);
+        for (int i = 0; i < actual.length; i++) {
+            String[] split = actual[i].split("( |\\(|\\))");
+            for (int j = 0; j < split.length; j++) {
+                actualSet.add(split[j]);
+            }
+        }
+
+        List<String> matchedSkills = new ArrayList<>(desired.length);
+        for (int i = 0; i < desired.length; i++) {
+            if (actualSet.contains(desired[i])) {
+                matchedSkills.add(desired[i]);
+            }
+        }
+        return matchedSkills;
+    }
+
+    static class Node {
+        private String value;
+        private Node left;
+        private Node right;
+
+        public Node(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
+        }
     }
 
 
