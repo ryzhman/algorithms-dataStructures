@@ -1,3 +1,5 @@
+package misc;
+
 public class Stack {
     private int[] elems;
     private int currentSize = 0;

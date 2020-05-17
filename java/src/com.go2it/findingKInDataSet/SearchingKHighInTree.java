@@ -1,9 +1,9 @@
 package findingKInDataSet;
 
+import misc.AutoRemovingList;
 import trees.Node;
 
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 import java.util.Stack;
 
@@ -67,30 +67,25 @@ public class SearchingKHighInTree {
         return max;
     }
 
+    public static List<Integer> getMaxElementsFromTheTree(Node root, int numberOfMaxElems) {
+        return findHighestElems(root, new AutoRemovingList<Integer>(numberOfMaxElems));
+    }
 
-    private static Deque<Integer> traverseRecursivelyOverTree(Node node, Deque<Integer> maxElems) {
-        int numberOfNodes = 0;
-        int thirdMax = maxElems.peekLast();
-//        int secondMax = maxElems.peek(1);
-        int firstMax = maxElems.peekFirst();
+    private static List<Integer> findHighestElems(Node root, AutoRemovingList<Integer> maxElems) {
+        //iterate over the tree
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            if (current == null) {
+                continue;
+            }
 
-        if (node != null) {
-//            nodeList.add(node);
-//            if (node.getValue() > thirdMax && node.getValue() > secondMax && node.getValue() > firstMax) {
-//                maxElems[0] = node.getValue();
-//            } else if (node.getValue() > thirdMax && node.getValue() < secondMax) {
-//                maxElems[2] = node.getValue();
-//            } else if (node.getValue() > thirdMax && node.getValue() > secondMax) {
-//
-//            }
+            maxElems.add(current.getValue());
 
-
-            ++numberOfNodes;
-            System.out.println("Current node: " + node.getValue());
-            System.out.println("Moving to the next node");
-//            numberOfNodes += traverseRecursivelyOverTree(node.getLeft());
-//            numberOfNodes += traverseRecursivelyOverTree(node.getRight());
+            stack.push(current.getRight());
+            stack.push(current.getLeft());
         }
-        return maxElems;
+        return maxElems.getArray();
     }
 }
