@@ -54,7 +54,6 @@ public class SkillsMatcher {
 
     public static List<String> findMatches(String[] actual, String[] desired, BiPredicate<String, String> test) {
         Map<String, String> map = new HashMap<>();
-        int counter = 0;
 
         for (int i = 0; i < actual.length; i++) {
             map.put(actual[i], "present");
@@ -66,7 +65,6 @@ public class SkillsMatcher {
                 String skill = entry.getKey();
 
                 if (test.test(skill, desired[i])) {
-//                    counter += desired[i].getValue();
                     matchedSkills.add(desired[i]);
                 }
             }

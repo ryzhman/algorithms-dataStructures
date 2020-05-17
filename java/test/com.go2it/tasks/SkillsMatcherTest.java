@@ -2,6 +2,8 @@ package tasks;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,13 +23,15 @@ public class SkillsMatcherTest {
     @Test
     public void findMatchesTestNonExactMatch() {
         BiPredicate<String, String> filter2 = (skill, desiredSkill) -> {
-            if (skill.contains(desiredSkill)) {
+            String[] split = skill.split("( |\\(|\\))");
+            List<String> skillsPart = Arrays.asList(split);
+            if (skillsPart.contains(desiredSkill)) {
                 return true;
             }
             return false;
         };
         String[] desired = {"Excel", "C", "Word", "AI", "Ethereum"};
-        String[] presentSkills2 = {"Pascal", "MS Excel 2013", "MS Word", "Blockchain (Ethereum)"};
+        String[] presentSkills2 = {"PasCal", "MS Excel 2013", "MS Word", "Blockchain (Ethereum)"};
         assertEquals(Stream.of("Excel", "Word", "Ethereum").collect(Collectors.toList()), SkillsMatcher.matchSkills(desired, presentSkills2, filter2));
     }
 
