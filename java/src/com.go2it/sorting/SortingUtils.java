@@ -9,7 +9,7 @@ public class SortingUtils {
     }
 
     public static boolean isLess(Comparable i, Comparable j) {
-        return i.compareTo(j) < 0;
+        return i != null && i.compareTo(j) < 0;
     }
 
     public static boolean isSorted(Comparable[] arr) {
