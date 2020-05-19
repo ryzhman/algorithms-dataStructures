@@ -1,11 +1,14 @@
 package findingKInDataSet;
 
 import misc.AutoRemovingList;
+import sorting.SortingUtils;
 import trees.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Given the root of the binary tree, find the third max in the tree.
@@ -71,6 +74,24 @@ public class SearchingKHighInTree {
         return findHighestElems(root, new AutoRemovingList<Integer>(numberOfMaxElems));
     }
 
+    public static List<Comparable> getMaxElementsFromTheTreeBinaryHeap(Node root, int numberOfMaxElems) {
+        BinaryHeap heap = new BinaryHeap(numberOfMaxElems);
+
+        Node current = root;
+        Stack<Node> stack = new Stack<>();
+        stack.push(current);
+        while (!stack.isEmpty()) {
+            current = stack.pop();
+            if (current == null) {
+                continue;
+            }
+            heap.addElem(current.getValue());
+            stack.push(current.getRight());
+            stack.push(current.getLeft());
+        }
+        return Stream.of(heap.getArr()).collect(Collectors.toList());
+    }
+
     private static List<Integer> findHighestElems(Node root, AutoRemovingList<Integer> maxElems) {
         //iterate over the tree
         Stack<Node> stack = new Stack<>();
@@ -87,5 +108,44 @@ public class SearchingKHighInTree {
             stack.push(current.getLeft());
         }
         return maxElems.getArray();
+    }
+
+
+    private static class BinaryHeap {
+        private Comparable[] arr;
+        private int lastIndex = 0;
+
+        public BinaryHeap(int maxSize) {
+            this.arr = new Comparable[maxSize];
+        }
+
+        private void addElem(Comparable elem) {
+            if (SortingUtils.isLess(elem, arr[lastIndex])) {
+                //new entry is smaller than the smallest in the heap
+                return;
+            } else {
+                //replace the smallest elem with the new one and swim it to the proper place
+                arr[lastIndex] = elem;
+                swim(lastIndex);
+                if (lastIndex < arr.length - 1) {
+                    lastIndex++;
+                }
+            }
+        }
+
+        private void swim(int index) {
+            while (SortingUtils.isLess(arr[index / 2], arr[index])) {
+                SortingUtils.exchange(arr, index / 2, index);
+                index = index / 2;
+            }
+        }
+
+        public Comparable[] getArr() {
+            return arr;
+        }
+
+        public Comparable getMax() {
+            return arr[0];
+        }
     }
 }
