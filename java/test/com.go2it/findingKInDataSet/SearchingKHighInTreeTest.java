@@ -1,6 +1,6 @@
-package findingKInDataSet;
+package com.go2it.findingKInDataSet;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import trees.Node;
@@ -120,7 +120,7 @@ public class SearchingKHighInTreeTest {
         assertEquals(result, SearchingKHighInTree.getMaxElementsFromTheTree(root, 6));
     }
 
-    @Ignore
+    @Disabled
     @DisplayName("Binary heap will not work for >3 elements since the ordering is not guaranteed")
     @Test
     public void findMaxValueBinaryHeapIterationTest() {

@@ -1,4 +1,4 @@
-package findingKInDataSet;
+package com.go2it.findingKInDataSet;
 
 import misc.AutoRemovingList;
 import sorting.SortingUtils;
@@ -48,7 +48,7 @@ public class SearchingKHighInTree {
      * @param root
      * @return
      */
-    static int findMaxValueStack(Node root) {
+    public static int findMaxValueStack(Node root) {
         return iterateOverTree(root);
     }
 
