@@ -1,4 +1,4 @@
-package dynamicConnectivity;
+package com.go2it.dynamicConnectivity;
 
 import java.util.List;
 

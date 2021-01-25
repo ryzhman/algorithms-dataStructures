@@ -1,6 +1,6 @@
-package priorityQueues;
+package com.go2it.priorityQueues;
 
-import sorting.SortingUtils;
+import com.go2it.sorting.SortingUtils;
 
 public class BinaryHeap {
     private Comparable[] arr;
@@ -27,7 +27,7 @@ public class BinaryHeap {
             //swap the parent and child if child is bigger than parrent
             if (SortingUtils.isLess(arr[index / 2], arr[index])) {
                 SortingUtils.exchange(arr, index / 2, index);
-                index = index/2;
+                index = index / 2;
             } else {
                 return;
             }

@@ -1,4 +1,4 @@
-package sorting;
+package com.go2it.sorting;
 
 public class SortingUtils {
 

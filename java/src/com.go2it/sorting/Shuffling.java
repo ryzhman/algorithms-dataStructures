@@ -1,4 +1,4 @@
-package sorting;
+package com.go2it.sorting;
 
 import java.util.Random;
 

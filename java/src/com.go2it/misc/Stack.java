@@ -1,4 +1,4 @@
-package misc;
+package com.go2it.misc;
 
 public class Stack {
     private int[] elems;

@@ -1,4 +1,4 @@
-package sorting;
+package com.go2it.sorting;
 
 /**
  * select an element (i) and find the smallest element and swap them

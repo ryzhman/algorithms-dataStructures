@@ -1,4 +1,4 @@
-package findingKInDataSet;
+package com.go2it.findingKInDataSet;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package findingKInDataSet;
+package com.go2it.findingKInDataSet;
 
-import sorting.SortingUtils;
+import com.go2it.sorting.SortingUtils;
 
 public class FindKthElem {
 

@@ -1,4 +1,4 @@
-package queue;
+package com.go2it.queue;
 
 import stack.DejkstraExpressionStack;
 

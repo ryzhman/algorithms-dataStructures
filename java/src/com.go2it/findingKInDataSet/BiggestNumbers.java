@@ -1,4 +1,4 @@
-package findingKInDataSet;
+package com.go2it.findingKInDataSet;
 
 import java.util.Arrays;
 import java.util.Collections;

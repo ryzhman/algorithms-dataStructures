@@ -1,4 +1,4 @@
-package misc;
+package com.go2it.misc;
 
 import org.junit.jupiter.api.Test;
 

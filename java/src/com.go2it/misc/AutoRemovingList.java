@@ -1,4 +1,4 @@
-package misc;
+package com.go2it.misc;
 
 import java.util.ArrayList;
 import java.util.List;

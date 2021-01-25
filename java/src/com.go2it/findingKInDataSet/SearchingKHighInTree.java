@@ -1,7 +1,7 @@
 package com.go2it.findingKInDataSet;
 
-import misc.AutoRemovingList;
-import sorting.SortingUtils;
+import com.go2it.misc.AutoRemovingList;
+import com.go2it.sorting.SortingUtils;
 import trees.Node;
 
 import java.util.ArrayList;
