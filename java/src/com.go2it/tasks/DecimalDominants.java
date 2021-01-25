@@ -1,11 +1,12 @@
-package tasks;
+package com.go2it.tasks;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static sorting.SortingUtils.isLess;
+import static com.go2it.sorting.SortingUtils.isLess;
+
 
 public class DecimalDominants {
 
@@ -74,7 +75,7 @@ public class DecimalDominants {
         }
 
         Comparable[] resultComp = new Comparable[result.size()];
-        for (int i=0; i< result.size(); i++) {
+        for (int i = 0; i < result.size(); i++) {
             resultComp[i] = result.get(i);
         }
         return resultComp;

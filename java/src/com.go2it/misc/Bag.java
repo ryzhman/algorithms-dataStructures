@@ -1,6 +1,6 @@
 package com.go2it.misc;
 
-import stack.HomeMadeLinkedListBasedStack;
+import com.go2it.stack.HomeMadeLinkedListBasedStack;
 
 import java.util.Iterator;
 

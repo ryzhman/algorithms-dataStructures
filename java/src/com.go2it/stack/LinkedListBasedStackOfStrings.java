@@ -1,4 +1,4 @@
-package stack;
+package com.go2it.stack;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

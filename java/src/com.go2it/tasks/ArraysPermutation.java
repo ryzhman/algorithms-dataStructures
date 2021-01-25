@@ -1,4 +1,4 @@
-package tasks;
+package com.go2it.tasks;
 
 /**
  * Check if two arrays are exact permutations - same values in a different order

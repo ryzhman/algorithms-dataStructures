@@ -1,4 +1,4 @@
-package tasks;
+package com.go2it.tasks;
 
 import org.junit.jupiter.api.Test;
 

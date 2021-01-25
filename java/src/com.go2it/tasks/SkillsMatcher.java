@@ -1,4 +1,4 @@
-package tasks;
+package com.go2it.tasks;
 
 /*
  * To execute Java, please define "static void main" on a class

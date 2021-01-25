@@ -1,4 +1,4 @@
-package stack;
+package com.go2it.stack;
 
 /**
  * ResizingStack with getMax() method based on two stacks

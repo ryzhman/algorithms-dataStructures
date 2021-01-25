@@ -1,4 +1,4 @@
-package tasks;
+package com.go2it.tasks;
 
 import java.util.HashMap;
 import java.util.Map;

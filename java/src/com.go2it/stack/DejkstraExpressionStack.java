@@ -1,4 +1,4 @@
-package stack;
+package com.go2it.stack;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

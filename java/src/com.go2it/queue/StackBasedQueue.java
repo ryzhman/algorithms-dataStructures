@@ -1,6 +1,6 @@
 package com.go2it.queue;
 
-import stack.DejkstraExpressionStack;
+import com.go2it.stack.DejkstraExpressionStack;
 
 /**
  * Using double queue to create a stack by another stack.

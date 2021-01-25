@@ -1,6 +1,6 @@
 package com.go2it.queue;
 
-import stack.ResizingArray;
+import com.go2it.stack.ResizingArray;
 
 /**
  * No way to make this as a Generic one

@@ -1,4 +1,4 @@
-package priorityQueues;
+package com.go2it.priorityQueues;
 
 import org.junit.jupiter.api.Test;
 

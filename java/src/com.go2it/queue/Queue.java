@@ -1,6 +1,6 @@
 package com.go2it.queue;
 
-import stack.HomeMadeLinkedListBasedStack;
+import com.go2it.stack.HomeMadeLinkedListBasedStack;
 
 public class Queue implements iQueue {
     private HomeMadeLinkedListBasedStack<Integer> queue;

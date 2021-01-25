@@ -1,7 +1,7 @@
 package com.go2it.dynamicConnectovity;
 
-import dynamicConnectivity.DataStructure;
-import dynamicConnectivity.QuickUnion;
+import com.go2it.dynamicConnectivity.DataStructure;
+import com.go2it.dynamicConnectivity.QuickUnion;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;

@@ -1,4 +1,4 @@
-package stack;
+package com.go2it.stack;
 
 import java.io.IOException;
 import java.nio.file.Files;

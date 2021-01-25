@@ -1,4 +1,4 @@
-package stack;
+package com.go2it.stack;
 
 public class ResizingArray {
     private int[] array;
