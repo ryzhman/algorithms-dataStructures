@@ -69,6 +69,48 @@ public class OrderedArray {
         }
     }
 
+    public void mergeSortAsc() {
+        mergeSortWorker(0,numElements-1);
+    }
+
+    private void mergeSortWorker(int lowerBound, int upperBound){
+        int mid;
+        if (lowerBound<upperBound){
+            mid = (lowerBound+upperBound) /2;
+            mergeSortWorker(lowerBound,mid) ;
+            mergeSortWorker(mid+1,upperBound);
+            merge(lowerBound,mid,upperBound);
+        }
+    }
+
+    private void merge (int low, int mid, int upper){
+        int i,j,k;
+        int[] temp = new int[upper - low +1];
+        i= low; k=0; j=mid+1;
+        while (i <= mid && j<=upper){
+            if (m_array[i]<m_array[j]){
+                temp[k] = m_array[i];
+                i++;
+            }else{
+                temp[k] = m_array[j];
+                j++;
+            }
+            k++;
+        }
+        while (i<=mid){
+            temp[k]=m_array[i];
+            k++;i++;
+        }
+        while (j<=upper){
+            temp[k]=m_array[j];
+            k++;j++;
+        }
+        // copy back
+        for (i=low;i<=upper;i++){
+            m_array[i]=temp[i-low];
+        }
+    }
+
     public boolean removeByIndex(int index) {
         if (index < 0 || index >= numElements) {
             return false;
@@ -151,7 +193,8 @@ public class OrderedArray {
         orderedArray.addInOrder(23);
         System.out.println(orderedArray.listItems());
 
-        orderedArray.removeItem(-1);
+        orderedArray.mergeSortAsc();
+//        orderedArray.removeItem(-1);
         System.out.println(orderedArray.listItems());
 
     }
