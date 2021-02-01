@@ -14,6 +14,7 @@ public class TriangularNumbers {
         if (num <= 1) {
             return 1;
         }
+//        calculate the sum of existing dots in the current line
         return num + isTriangularNumber(num - 1);
     }
 }
